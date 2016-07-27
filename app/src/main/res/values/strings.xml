@@ -20,6 +20,12 @@
     <!-- Label for overflow menu option that deletes all pet data in the app [CHAR LIMIT=20] -->
     <string name="action_delete_all_entries">Delete All Pets</string>
 
+    <!-- Title text for the empty view, which describes the empty dog house image [CHAR LIMIT=50] -->
+    <string name="empty_view_title_text">It\'s a bit lonely here...</string>
+
+    <!-- Subtitle text for the empty view that prompts the user to add a pet [CHAR LIMIT=50] -->
+    <string name="empty_view_subtitle_text">Get started by adding a pet</string>
+
     <!-- Title for the activity to add a new pet [CHAR LIMIT=20] -->
     <string name="editor_activity_title_new_pet">Add a Pet</string>
 
