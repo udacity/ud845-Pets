@@ -15,6 +15,7 @@
  */
 package com.example.android.pets.data;
 
+import android.net.Uri;
 import android.provider.BaseColumns;
 
 /**
@@ -79,6 +80,26 @@ public final class PetContract {
         public static final int GENDER_UNKNOWN = 0;
         public static final int GENDER_MALE = 1;
         public static final int GENDER_FEMALE = 2;
+
+        /**
+         * Content Authority to used by our content provider
+         */
+        public static final String CONTENT_AUTHORITY = "com.example.android.pets";
+
+        /**
+         * Base URI for our content provider
+         */
+        public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
+
+        /**
+         * Location of the pets table
+         */
+        public static final String PATH_PETS = "pets";
+
+        /**
+         * Finished URI
+         */
+        public static final Uri CONTENT_URI = Uri.withAppendedPath(BASE_CONTENT_URI, PATH_PETS);
     }
 
 }
