@@ -15,6 +15,10 @@ import android.util.Log;
 
 import com.example.android.pets.data.PetContract.PetEntry;
 
+import static com.example.android.pets.data.PetContract.PetEntry.GENDER_FEMALE;
+import static com.example.android.pets.data.PetContract.PetEntry.GENDER_UNKNOWN;
+import static com.example.android.pets.data.PetContract.PetEntry.GENDER_MALE;
+
 /**
  * {@link ContentProvider} for Pets app.
  */
@@ -132,6 +136,24 @@ public class PetProvider extends ContentProvider {
         // Get writable database
         SQLiteDatabase database = mDbHelper.getWritableDatabase();
 
+        // Check that the name is not null
+        String name = values.getAsString(PetEntry.COLUMN_PET_NAME);
+        Integer gender = values.getAsInteger(PetEntry.COLUMN_PET_GENDER);
+        Integer weight = values.getAsInteger(PetEntry.COLUMN_PET_WEIGHT);
+
+
+        if (name == null) {
+            throw new IllegalArgumentException("Pet requires a name");
+        }
+
+        if (gender != null && !validGender(gender)){
+            throw new IllegalArgumentException("Pet requires a valid gender");
+        }
+
+        if (weight != null && weight < 0) {
+            throw new IllegalArgumentException("Pet requires valid weight");
+        }
+
         long id = database.insert(PetEntry.TABLE_NAME, null, values);
 
         // If the ID is -1, then the insertion failed. Log an error and return null.
@@ -142,6 +164,13 @@ public class PetProvider extends ContentProvider {
         // Once we know the ID of the new row in the table,
         // return the new URI with the ID appended to the end of it
         return ContentUris.withAppendedId(uri, id);
+    }
+
+    private boolean validGender(int gender) {
+        if (gender == GENDER_UNKNOWN || gender == GENDER_MALE || gender == GENDER_FEMALE) {
+            return true;
+        }
+        return false;
     }
 
     /**
