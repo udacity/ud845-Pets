@@ -21,7 +21,6 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,7 +31,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.android.pets.data.PetContract.PetEntry;
-import com.example.android.pets.data.PetDbHelper;
 
 
 /**
@@ -40,16 +38,24 @@ import com.example.android.pets.data.PetDbHelper;
  */
 public class EditorActivity extends AppCompatActivity {
 
-    /** EditText field to enter the pet's name */
+    /**
+     * EditText field to enter the pet's name
+     */
     private EditText mNameEditText;
 
-    /** EditText field to enter the pet's breed */
+    /**
+     * EditText field to enter the pet's breed
+     */
     private EditText mBreedEditText;
 
-    /** EditText field to enter the pet's weight */
+    /**
+     * EditText field to enter the pet's weight
+     */
     private EditText mWeightEditText;
 
-    /** EditText field to enter the pet's gender */
+    /**
+     * EditText field to enter the pet's gender
+     */
     private Spinner mGenderSpinner;
 
     /**
@@ -132,7 +138,7 @@ public class EditorActivity extends AppCompatActivity {
         values.put(PetEntry.COLUMN_PET_WEIGHT, weight);
 
         // Insert a new row for pet in the database, returning the ID of that new row.
-        Uri newRow = getContentResolver().insert(PetEntry.CONTENT_URI,values);
+        Uri newRow = getContentResolver().insert(PetEntry.CONTENT_URI, values);
 
         // Show a toast message depending on whether or not the insertion was successful
         if (newRow == null) {
