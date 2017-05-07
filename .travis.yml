@@ -5,8 +5,8 @@ android:
   components:
     # Uncomment the lines below if you want to
     # use the latest revision of Android SDK Tools
-     - tools
-     - platform-tools
+#     - tools
+#     - platform-tools
 
     # The BuildTools version used by your project
     - build-tools-25.0.2
@@ -25,11 +25,11 @@ android:
     - sys-img-armeabi-v7a-android-25
     - sys-img-armeabi-v7a-android-15
 
-    before_script:
-      # Create and start emulator
-      - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
-      - emulator -avd test -no-skin -no-audio -no-window &
-      - android-wait-for-emulator
-      - adb shell input keyevent 82 &
+#    before_script:
+#      # Create and start emulator
+#      - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
+#      - emulator -avd test -no-skin -no-audio -no-window &
+#      - android-wait-for-emulator
+#      - adb shell input keyevent 82 &
 
     script: ./gradlew connectedAndroidTest
