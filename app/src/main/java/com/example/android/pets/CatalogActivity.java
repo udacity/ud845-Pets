@@ -55,10 +55,15 @@ public class CatalogActivity extends AppCompatActivity {
     private void displayDatabaseInfo() {
         PetDBHelper petDBHelper = new PetDBHelper(this);
         SQLiteDatabase db = petDBHelper.getReadableDatabase();
+
         Cursor cursor = db.rawQuery("select * from " + PetContract.PetEntry.TABLE_NAME, null);
-        TextView displayView = (TextView) findViewById(R.id.text_view_pet);
-        displayView.setText("Number of row in pets database table " + cursor.getCount());
-        cursor.close();
+        try {
+            TextView displayView = (TextView) findViewById(R.id.text_view_pet);
+            displayView.setText("Number of row in pets database table " + cursor.getCount());
+        } finally {
+            cursor.close();
+        }
+
     }
 
     @Override
