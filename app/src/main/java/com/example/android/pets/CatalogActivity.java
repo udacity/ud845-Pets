@@ -16,12 +16,18 @@
 package com.example.android.pets;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+
+import com.example.android.pets.data.PetContract;
+import com.example.android.pets.data.PetDBHelper;
 
 /**
  * Displays list of pets that were entered and stored in the app.
@@ -42,6 +48,17 @@ public class CatalogActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        displayDatabaseInfo();
+    }
+
+    // accessing database so that we can see database is working
+    private void displayDatabaseInfo() {
+        PetDBHelper petDBHelper = new PetDBHelper(this);
+        SQLiteDatabase db = petDBHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from " + PetContract.PetEntry.TABLE_NAME, null);
+        TextView displayView = (TextView) findViewById(R.id.text_view_pet);
+        displayView.setText("Number of row in pets database table " + cursor.getCount());
+        cursor.close();
     }
 
     @Override
