@@ -1,0 +1,27 @@
+TASK com.example.android.pets id=48
+  ACTIVITY com.example.android.pets/.CatalogActivity ab8974e pid=4621
+    Local FragmentActivity acbf1e2 State:
+      mCreated=truemResumed=true mStopped=false mReallyStopped=false
+      mLoadersStarted=true
+    FragmentManager misc state:
+      mHost=android.support.v4.app.FragmentActivity$HostCallbacks@2a5c3c0
+      mContainer=android.support.v4.app.FragmentActivity$HostCallbacks@2a5c3c0
+      mCurState=5 mStateSaved=false mDestroyed=false
+    View Hierarchy:
+      com.android.internal.policy.DecorView{8b908f9 V.E..... ... 0,0-1080,1920}
+        android.widget.LinearLayout{11ae03e V.E..... ... 0,0-1080,1794}
+          android.view.ViewStub{6b88e9f G.E..... ... 0,0-0,0 #10203e8 android:id/action_mode_bar_stub}
+          android.widget.FrameLayout{6035bec V.E..... ... 0,63-1080,1794}
+            android.support.v7.widget.ActionBarOverlayLayout{9f83bb5 V.E..... ... 0,0-1080,1731 #7f0e0062 app:id/decor_content_parent}
+              android.support.v7.widget.ContentFrameLayout{3e0c24a V.E..... ... 0,147-1080,1731 #1020002 android:id/content}
+                android.widget.RelativeLayout{12175bb V.E..... ... 0,0-1080,1584}
+                  android.support.v7.widget.AppCompatTextView{6c04ad8 V.ED.... ... 0,0-1080,1584 #7f0e0073 app:id/text_view_pet}
+                  android.support.design.widget.FloatingActionButton{1bdde31 VFED..C. ... 891,1395-1038,1542 #7f0e0074 app:id/fab}
+              android.support.v7.widget.ActionBarContainer{270b916 V.ED.... ... 0,0-1080,147 #7f0e0063 app:id/action_bar_container}
+                android.support.v7.widget.Toolbar{f67b297 V.E..... ... 0,0-1080,147 #7f0e0064 app:id/action_bar}
+                  android.support.v7.widget.AppCompatTextView{f5b3c84 V.ED.... ... 42,38-149,109}
+                  android.support.v7.widget.ActionMenuView{8612c6d V.E..... ... 975,0-1080,147}
+                    android.support.v7.widget.ActionMenuPresenter$OverflowMenuButton{63750a2 VFED..CL ... 0,10-105,136}
+                android.support.v7.widget.ActionBarContextView{f6ae133 G.E..... ... 0,0-0,0 #7f0e0065 app:id/action_context_bar}
+        android.view.View{1919cf0 V.ED.... ... 0,1794-1080,1920 #1020030 android:id/navigationBarBackground}
+        android.view.View{a712269 V.ED.... ... 0,0-1080,63 #102002f android:id/statusBarBackground}

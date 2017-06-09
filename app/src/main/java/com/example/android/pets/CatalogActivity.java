@@ -15,6 +15,7 @@
  */
 package com.example.android.pets;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -25,15 +26,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.pets.data.PetContract;
+import com.example.android.pets.data.PetContract.PetEntry;
 import com.example.android.pets.data.PetDBHelper;
 
 /**
  * Displays list of pets that were entered and stored in the app.
  */
 public class CatalogActivity extends AppCompatActivity {
-
+    private SQLiteDatabase db;
+    private PetDBHelper mPetDBHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,13 +52,14 @@ public class CatalogActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        mPetDBHelper = new PetDBHelper(this);
         displayDatabaseInfo();
     }
 
     // accessing database so that we can see database is working
     private void displayDatabaseInfo() {
-        PetDBHelper petDBHelper = new PetDBHelper(this);
-        SQLiteDatabase db = petDBHelper.getReadableDatabase();
+
+        db = mPetDBHelper.getReadableDatabase();
 
         Cursor cursor = db.rawQuery("select * from " + PetContract.PetEntry.TABLE_NAME, null);
         try {
@@ -80,7 +85,13 @@ public class CatalogActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             // Respond to a click on the "Insert dummy data" menu option
             case R.id.action_insert_dummy_data:
-                // Do nothing for now
+                long newRowID = insertPet();
+                if (newRowID != -1) {
+                    displayDatabaseInfo();
+                    Toast.makeText(getBaseContext(), "Inserted data row id: " + newRowID, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getBaseContext(), "No data inserted", Toast.LENGTH_SHORT).show();
+                }
                 return true;
             // Respond to a click on the "Delete all entries" menu option
             case R.id.action_delete_all_entries:
@@ -88,5 +99,18 @@ public class CatalogActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private long insertPet() {
+        db = mPetDBHelper.getWritableDatabase();
+
+        // Creating contentValues which will be used for database data insert
+        ContentValues values = new ContentValues();
+        values.put(PetEntry.COLUMN_PET_NAME, "Toto");
+        values.put(PetEntry.COLUMN_PET_BREED, "Terrier");
+        values.put(PetEntry.COLUMN_PET_GENDER, PetEntry.GENDER_MALE);
+        values.put(PetEntry.COLUMN_PET_WEIGHT, "7kg");
+        return db.insert(PetEntry.TABLE_NAME, null, values);
+
     }
 }

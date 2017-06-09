@@ -20,7 +20,7 @@ public class PetDBHelper extends SQLiteOpenHelper {
                     PetEntry._ID + " INTEGER PRIMARY KEY," +
                     PetEntry.COLUMN_PET_NAME + " TEXT NOT NULL," +
                     PetEntry.COLUMN_PET_BREED + " TEXT," +
-                    PetEntry.COLUMN_PET_GENdER + " INTEGER NOT NULL," +
+                    PetEntry.COLUMN_PET_GENDER + " INTEGER NOT NULL," +
                     PetEntry.COLUMN_PET_WEIGHT + " INTEGER NOT NULL DEFAULT 0 );";
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + PetEntry.TABLE_NAME;
@@ -30,8 +30,8 @@ public class PetDBHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL(SQL_CREATE_ENTRIES);
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL(SQL_CREATE_ENTRIES);
     }
 
     @Override
