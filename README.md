@@ -7,9 +7,9 @@ Used in a Udacity course in the Android Basics Nanodegree by Google.
 Pre-requisites
 --------------
 
-- Android SDK v24
-- Android Build Tools v23.0.3
-- Android Support Repository v24.1.1
+- Android SDK v26.0.2
+- Android Build Tools v27.0.3
+- Android Support Repository v27.0.2
 
 Getting Started
 ---------------
@@ -29,7 +29,7 @@ submitting a pull request through GitHub. Please see CONTRIBUTING.md for more de
 License
 -------
 
-Copyright 2016 The Android Open Source Project, Inc.
+Copyright 2018 The Android Open Source Project, Inc.
 
 Licensed to the Apache Software Foundation (ASF) under one or more contributor
 license agreements.  See the NOTICE file distributed with this work for
