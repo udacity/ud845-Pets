@@ -1,13 +1,20 @@
 apply plugin: 'com.android.application'
 
+ext {
+    buildToolsV = "27.0.3"
+    supportLibV = "27.0.2"
+}
+
 android {
-    compileSdkVersion 24
-    buildToolsVersion "23.0.3"
+
+    compileSdkVersion 27
+    buildToolsVersion buildToolsV
 
     defaultConfig {
         applicationId "com.example.android.pets"
         minSdkVersion 15
-        targetSdkVersion 24
+        targetSdkVersion 27
+
         versionCode 1
         versionName "1.0"
     }
@@ -19,7 +26,8 @@ android {
     }
 }
 
+
 dependencies {
-    compile 'com.android.support:appcompat-v7:24.1.1'
-    compile 'com.android.support:design:24.1.1'
+    implementation "com.android.support:appcompat-v7:$supportLibV"
+    implementation "com.android.support:design:$supportLibV"
 }
